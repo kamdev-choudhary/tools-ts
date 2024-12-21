@@ -121,7 +121,7 @@ const FileReaderComponent: React.FC<FileProps> = ({ file }) => {
               await workbook.xlsx.load(excelReader.result as ArrayBuffer);
               const worksheet = workbook?.getWorksheet(1);
               const rows: any[] = [];
-              worksheet?.eachRow((row, rowNumber) => {
+              worksheet?.eachRow((row, rowNumber: any) => {
                 rows.push(row.values);
               });
               setFileContent(
@@ -130,7 +130,7 @@ const FileReaderComponent: React.FC<FileProps> = ({ file }) => {
                   <table style={{ width: "100%" }}>
                     <thead>
                       <tr>
-                        {rows[0]?.map((cell, index) => (
+                        {rows[0]?.map((cell: any, index: any) => (
                           <th key={index}>{cell}</th>
                         ))}
                       </tr>
@@ -138,7 +138,7 @@ const FileReaderComponent: React.FC<FileProps> = ({ file }) => {
                     <tbody>
                       {rows.slice(1).map((row, rowIndex) => (
                         <tr key={rowIndex}>
-                          {row.map((cell, cellIndex) => (
+                          {row.map((cell: any, cellIndex: any) => (
                             <td key={cellIndex}>{cell}</td>
                           ))}
                         </tr>
